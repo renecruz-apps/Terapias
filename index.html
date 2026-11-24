@@ -14,7 +14,13 @@
 </style>
 </head>
 <body>
-<iframe src="https://script.google.com/macros/s/AKfycby_yfo5i_knwoKzHqwTaoVBK4jHT1uu-PBFczW3OOj_xkUTFQ-z5DWaEcqZ08DDvVhI/exec"
-        title="Lançamento de terapias" allow="clipboard-write"></iframe>
+<iframe id="app" title="Lançamento de terapias" allow="clipboard-write"></iframe>
+<script>
+  // abre o app; se o link tiver ?fa=código (assinatura da família), repassa o código para a página de assinatura
+  var APP = 'https://script.google.com/macros/s/AKfycby_yfo5i_knwoKzHqwTaoVBK4jHT1uu-PBFczW3OOj_xkUTFQ-z5DWaEcqZ08DDvVhI/exec';
+  var fa = (new URLSearchParams(location.search).get('fa') || '').replace(/[^a-fA-F0-9]/g, '');
+  if (fa) document.title = 'Assinatura – Neuromuscular Care';
+  document.getElementById('app').src = APP + (fa ? '?fa=' + fa : '');
+</script>
 </body>
 </html>
